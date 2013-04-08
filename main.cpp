@@ -256,11 +256,11 @@ int main(int argc, char ** argv)
 	vector<unsigned char> vmessage = StringToVector((unsigned char*)data.c_str());
 	vector<unsigned char> vtoadd = StringToVector((unsigned char*)datatoadd.c_str());
 
-	unsigned char firstSig[20];
+	unsigned char firstSig[128];
 	DigestToRaw(sig, firstSig);
 	unsigned char * secondSig;
 	vector<unsigned char> * secondMessage = sex->GenerateStretchedData(vmessage, keylength, firstSig, vtoadd, &secondSig);
-	for(int x = 0; x < 20; x++)
+	for(int x = 0; x < sig.size()/2; x++)
 	{
 		printf("%02x", secondSig[x]);
 	}
