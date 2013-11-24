@@ -18,7 +18,7 @@ Help Menu
          -a --additional    The information you would like to add to the known message.
          -k --keylength     The length in bytes of the key being used to sign the original message with.
          Version 1.0 with MD5, SHA1, SHA256 and SHA512 support.
-         <Developed by bwall(@bwallHatesTwits)>
+         <Developed by bwall(@botnet_hunter)>
 
 Sample Output
 =============
@@ -31,6 +31,8 @@ Compile
 =======
 
     git clone https://github.com/bwall/HashPump.git
-    apt-get install eclipse eclipse-cdt
+    apt-get install g++ libssl-dev
+    make
+    make install
 
-Open eclipse, go to File->import, category General, choose Existing projects into Workspace, and select the folder you just downloaded. Use Ctrl+B to build the project (or see the Project menu to build only this project). The executable will be in the Debug folder of the source code.
+apt-get and make install require root privileges to run correctly.  The actual requirement is for -lcrypto, so depending on your operating system, your dependencies may vary.

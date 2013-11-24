@@ -260,7 +260,7 @@ int main(int argc, char ** argv)
 	DigestToRaw(sig, firstSig);
 	unsigned char * secondSig;
 	vector<unsigned char> * secondMessage = sex->GenerateStretchedData(vmessage, keylength, firstSig, vtoadd, &secondSig);
-	for(int x = 0; x < sig.size()/2; x++)
+	for(unsigned int x = 0; x < sig.size()/2; x++)
 	{
 		printf("%02x", secondSig[x]);
 	}

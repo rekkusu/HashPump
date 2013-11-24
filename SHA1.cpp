@@ -54,7 +54,7 @@ bool SHA1ex::ValidateSignature(vector<unsigned char> key, vector<unsigned char> 
 vector<unsigned char> * SHA1ex::GenerateStretchedData(vector<unsigned char> originalMessage, int keylength, unsigned char * hash, vector<unsigned char> added, unsigned char ** newSig)
 {
 	vector<unsigned char> * ret = new vector<unsigned char>();
-	for(int x = 0; x < originalMessage.size(); x++)
+	for(unsigned int x = 0; x < originalMessage.size(); x++)
 		ret->push_back(originalMessage[x]);
 	int tailLength = ret->size() + keylength;
 	tailLength *= 8;
