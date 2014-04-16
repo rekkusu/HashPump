@@ -113,7 +113,7 @@ void PrintHelp()
 	cout << "     -d --data          The data from the known message." << endl;
 	cout << "     -a --additional    The information you would like to add to the known message." << endl;
 	cout << "     -k --keylength     The length in bytes of the key being used to sign the original message with." << endl;
-	cout << "     Version 1.0.0 with MD5, SHA1, SHA256 and SHA512 support." << endl;
+	cout << "     Version 1.0.1 with MD5, SHA1, SHA256 and SHA512 support." << endl;
 	cout << "     <Developed by bwall(@bwallHatesTwits)>" << endl;
 }
 
@@ -157,7 +157,7 @@ int main(int argc, char ** argv)
 				if(sex == NULL)
 				{
 					cout << "Unsupported signature size." << endl;
-					return 0;
+					return 1;
 				}
 				break;
 			case 2:
@@ -183,7 +183,7 @@ int main(int argc, char ** argv)
 				if(sex == NULL)
 				{
 					cout << "Unsupported hash size." << endl;
-					return 0;
+					return 1;
 				}
 				break;
 			case 'd':
@@ -231,7 +231,7 @@ int main(int argc, char ** argv)
 		if(sex == NULL)
 		{
 			cout << "Unsupported hash size." << endl;
-			return 0;
+			return 1;
 		}
 	}
 
