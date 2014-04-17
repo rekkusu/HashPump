@@ -17,7 +17,7 @@ Help Menu
          -d --data          The data from the known message.
          -a --additional    The information you would like to add to the known message.
          -k --keylength     The length in bytes of the key being used to sign the original message with.
-         Version 1.0 with MD5, SHA1, SHA256 and SHA512 support.
+         Version 1.0.1 with MD5, SHA1, SHA256 and SHA512 support.
          <Developed by bwall(@botnet_hunter)>
 
 Sample Output
@@ -36,3 +36,12 @@ Compile
     make install
 
 apt-get and make install require root privileges to run correctly.  The actual requirement is for -lcrypto, so depending on your operating system, your dependencies may vary.
+
+Mentions
+========
+HashPump has been mentioned in a few write ups.  If you are wondering how you can use HashPump, these are some great examples.
+* http://ctfcrew.org/writeup/54
+* http://d.hatena.ne.jp/kusano_k/20140310/1394471922 (JP)
+* http://conceptofproof.wordpress.com/2014/04/13/plaidctf-2014-web-150-mtgox-writeup/
+* http://achatz.me/plaid-ctf-mt-pox/
+* http://herkules.oulu.fi/thesis/nbnfioulu-201401141005.pdf
