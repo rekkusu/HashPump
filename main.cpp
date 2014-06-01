@@ -6,6 +6,7 @@
 #include "SHA256.h"
 #include "SHA512ex.h"
 #include "MD4ex.h"
+#include "CRC32ex.h"
 
 using namespace std;
 
@@ -100,6 +101,10 @@ Extender * GetExtenderForHash(string sig)
 	{
 		 return new SHA512ex();
 	}
+	else if(sig.length() == 8)
+	{
+		return new CRC32ex();
+	}
 	return NULL;
 }
 
@@ -113,8 +118,8 @@ void PrintHelp()
 	cout << "     -d --data          The data from the known message." << endl;
 	cout << "     -a --additional    The information you would like to add to the known message." << endl;
 	cout << "     -k --keylength     The length in bytes of the key being used to sign the original message with." << endl;
-	cout << "     Version 1.0.2 with MD5, SHA1, SHA256 and SHA512 support." << endl;
-	cout << "     <Developed by bwall(@bwallHatesTwits)>" << endl;
+	cout << "     Version 1.1.2 with CRC32, MD5, SHA1, SHA256 and SHA512 support." << endl;
+	cout << "     <Developed by bwall(@botnet_hunter)>" << endl;
 }
 
 int main(int argc, char ** argv)
@@ -218,6 +223,9 @@ int main(int argc, char ** argv)
 
 		cout << "Testing MD4" << endl;
 		TestExtender(new MD4ex());
+
+		cout << "Testing CRC32" << endl;
+		TestExtender(new CRC32ex());
 
 		cout << "Testing concluded" << endl;
 		return 0;
