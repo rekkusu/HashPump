@@ -28,7 +28,7 @@ $ hashpump -s '6d5f807e23db210bc254a28be2d6759a0f5f5d99' --data 'count=10&lat=37
 count=10&lat=37.351&user_id=1&long=-119.827&waffle=eggo\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02(&waffle=liege
 ```
 
-## Compile
+## Compile & install
 
 ```bash
 $ git clone https://github.com/bwall/HashPump.git
@@ -38,6 +38,12 @@ $ make install
 ```
 
 `apt-get` and `make install` require root privileges to run correctly.  The actual requirement is for `-lcrypto`, so depending on your operating system, your dependencies may vary.
+
+On OS X HashPump can also be installed using [Homebrew](http://brew.sh/):
+
+```bash
+$ brew install hashpump
+```
 
 ## Mentions
 
