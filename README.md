@@ -55,3 +55,29 @@ HashPump has been mentioned in a few write-ups.  If you are wondering how you ca
 * http://achatz.me/plaid-ctf-mt-pox/
 * http://herkules.oulu.fi/thesis/nbnfioulu-201401141005.pdf
 * https://github.com/ctfs/write-ups/tree/master/plaid-ctf-2014/mtpox
+
+## Python Bindings
+Fellow Python lovers will be pleased with this addition.  Saving me from writing an implementation of all these hash algorithms with the ability to modify states in Python, Python bindings have been added in the form of hashpumpy.  This addition comes from [zachriggle](https://github.com/zachriggle).
+
+### Installation
+These Python bindings are available on [PyPI](https://pypi.python.org/pypi/hashpumpy/1.0) and can be installed via pip.
+  pip install hashpumpy
+  
+### Usage
+    >>> import hashpumpy
+    >>> help(hashpumpy.hashpump)
+    Help on built-in function hashpump in module hashpumpy:
+    
+    hashpump(...)
+        hashpump(hexdigest, original_data, data_to_add, key_length) -> (digest, message)
+    
+        Arguments:
+            hexdigest(str):      Hex-encoded result of hashing key + original_data.
+            original_data(str):  Known data used to get the hash result hexdigest.
+            data_to_add(str):    Data to append
+            key_length(int):     Length of unknown data prepended to the hash
+    
+        Returns:
+            A tuple containing the new hex digest and the new message.
+    >>> hashpumpy.hashpump('ffffffff', 'original_data', 'data_to_add', len('KEYKEYKEY'))
+    ('e3c4a05f', 'original_datadata_to_add')
