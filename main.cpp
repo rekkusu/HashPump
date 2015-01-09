@@ -118,6 +118,7 @@ void PrintHelp()
 	cout << "     -d --data          The data from the known message." << endl;
 	cout << "     -a --additional    The information you would like to add to the known message." << endl;
 	cout << "     -k --keylength     The length in bytes of the key being used to sign the original message with." << endl;
+	cout << "     -u --urlencode     Write the extended signature as a url string." << endl;
 	cout << "     Version 1.1.0 with CRC32, MD5, SHA1, SHA256 and SHA512 support." << endl;
 	cout << "     <Developed by bwall(@botnet_hunter)>" << endl;
 }
@@ -130,6 +131,7 @@ int main(int argc, char ** argv)
 	string datatoadd;
 	Extender * sex = NULL;
 	bool run_tests = false;
+  bool urlencode = false;
 
 	while(1)
 	{
@@ -140,11 +142,12 @@ int main(int argc, char ** argv)
 			{"data", required_argument, 0, 0},
 			{"additional", required_argument, 0, 0},
 			{"keylength", required_argument, 0, 0},
+			{"urlencode", no_argument, 0, 0},
 			{"help", no_argument, 0, 0},
 			{0, 0, 0, 0}
 		};
 
-		int c = getopt_long(argc, argv, "ts:d:a:k:h", long_options, &option_index);
+		int c = getopt_long(argc, argv, "ts:d:a:k:uh", long_options, &option_index);
 		if (c == -1)
 			break;
 
@@ -174,7 +177,10 @@ int main(int argc, char ** argv)
 			case 4:
 				keylength = atoi(optarg);
 				break;
-			case 5:
+      case 5:
+        urlencode = true;
+        break;
+			case 6:
 				PrintHelp();
 				return 0;
 			}
@@ -200,6 +206,9 @@ int main(int argc, char ** argv)
 			case 'k':
 				keylength = atoi(optarg);
 				break;
+      case 'u':
+        urlencode = true;
+        break;
 			case 'h':
 				PrintHelp();
 				return 0;
@@ -282,7 +291,14 @@ int main(int argc, char ** argv)
 		}
 		else
 		{
-			printf("\\x%02x", c);
+			if (urlencode)
+			{
+				printf("%%%02x", c);
+			}
+			else
+			{
+				printf("\\x%02x", c);
+			}
 		}
 	}
 	delete secondMessage;
